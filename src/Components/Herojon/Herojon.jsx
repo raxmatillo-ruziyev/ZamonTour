@@ -40,7 +40,7 @@ const Herojon = ({city,aholi,area,price}) => {
                         <p className="herojon-text">
                         {t("price")} <br /><span>{price}</span>
                         </p></li>
-                    <li className="herojon-item"><Button name={t("button2")}/></li>
+                    <li className="herojon-item2"><Button name={t("button2")}/></li>
                   </ul>
                 </div>
             </div>
