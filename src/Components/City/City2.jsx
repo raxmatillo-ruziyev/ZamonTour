@@ -9,14 +9,13 @@ import antalya from '../../assets/antalya.jpg'
 import usa1 from '../../assets/usa1.jpg'
 import europe2 from '../../assets/europe2.jpg'
 import sharm from '../../assets/sharm.jpg'
-
-import Card from "../Card/Card";
 import { LeftCircleOutlined, RightCircleOutlined } from "@ant-design/icons";
 import { useTranslation } from "react-i18next";
+import Card2 from "../Card/Card2";
 
 
 
-const City = () => {
+const City2 = () => {
     const { t, i18n } = useTranslation();
     let sliderRef = useRef(null);
     const next = () => {
@@ -87,28 +86,28 @@ const City = () => {
     return (
         <div className="city">
             <div className="container">
-                <h1 className="city-title">{t("city-title")}</h1>
-                <p className="city-text">{t("city-rext")}</p>
+                <h1 className="city-title">{t("city2")}</h1>
+                <p className="city-text">{t("city3")}</p>
                 <div className="slider-container">
 
                     <Slider ref={slider => (sliderRef = slider)} {...settings}>
                         <div className="slide-card">
-                            <Card city={'Canada'} number={"438"} images={canada} />
+                            <Card2 city={'Hindiston'} number={"234"}  images={canada} />
                         </div>
                         <div className="slide-card">
-                            <Card city={'Dubai'} number={"385"} images={dubai}/>
+                            <Card2 city={'Saudiya Arabistoni'} number={"234"} images={dubai}/>
                         </div>
                         <div className="slide-card">
-                            <Card city={'Antalya'} number={"278"} images={antalya}/>
+                            <Card2 city={'Xitoy'} number={"278"} images={antalya}/>
                         </div>
                         <div className="slide-card">
-                            <Card city={'USA'} number={"128"} images={usa1}/>
+                            <Card2 city={'Omon'} number={"128"} images={usa1}/>
                         </div>
                         <div className="slide-card">
-                            <Card city={'Europion Union'} number={"486"} images={europe2}/>
+                            <Card2 city={'Yevropa'} number={"486"} images={europe2}/>
                         </div>
                         <div className="slide-card">
-                            <Card city={'Sharm El-Sheikh'} number={"355"} images={sharm} />
+                            <Card2 city={'Hong-Kong'} number={"355"} images={sharm} />
                         </div>
                     </Slider>
                     <div style={{ textAlign: "center" }}>
@@ -125,4 +124,4 @@ const City = () => {
     );
 }
 
-export default City;
+export default City2;

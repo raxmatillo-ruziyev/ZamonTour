@@ -18,8 +18,13 @@
     font-weight: bold;
     font-family: sans-serif;
     line-height: 33px;
+  
 }
+// .card-text{
+//     width: 260px;
+// }
 .card-text,.cars-span{
+  
     font-size: 17px;
     text-align: left;
     font-family: sans-serif;
@@ -32,7 +37,8 @@
     opacity: 0.7;
 }
 .card-subtitle{
-    font-size: 23px;
+    font-size: 16px;
+    
     padding: 20px 0;
     text-align: left;
     line-height: 25px;
@@ -54,7 +60,10 @@ font-size: 17px;
 margin-right: 10px;
 opacity: 0.6;
 }
-
+button{
+    margin: 0 30px ;
+    font-size: 35px;
+}
 .card{
     position: relative;
 }
@@ -69,6 +78,7 @@ opacity: 0.6;
     z-index: -1;
 
 }
+
 @media(max-width: 1220px){
     .container{
         width: 1100px;

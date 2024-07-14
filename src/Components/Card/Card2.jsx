@@ -4,7 +4,7 @@ import Button from '../Button/Button'
 import { CarOutlined, HddOutlined, RightOutlined, SendOutlined } from '@ant-design/icons'
 import { useTranslation } from 'react-i18next'
 
-const Card = ({city,number,images}) => {
+const Card2 = ({city,number,images}) => {
     const { t, i18n } = useTranslation();
   return (
     <>
@@ -12,20 +12,22 @@ const Card = ({city,number,images}) => {
     <img src={images} alt="" className='card-img'  />
         <div className="card-box">
             <h1 className='card-title'>{city}</h1>
-            <p className='card-text'><i id='card-icon' className='fa fa-users'></i>{number}{t("card-title2")}<span className='cars-span'>{t("card-title1")}</span></p>
+           
+            <li className="card-item">  
+             <p className='card-text'><i id='card-icon' className='fa fa-users'></i>    {number}    {t("card-title")}</p></li>
             <hr className='card-hr' />
-            <h2 className="card-subtitle">{t( "card-subtitle")}</h2>
+            <h2 className="card-subtitle">{t( "card-subtitle2")}</h2>
             <ul className='card-list'>
                 <li className="card-item">  
-             <i id='card-icon' className='fa fa-taxi'></i>
-                <p className='card-text'>{t( "card-text1")}</p> </li>
+             <i id='card-icon' className='fa fa-tags'></i>
+                <p className='card-text'>{t( "card-text6")}</p> </li>
                 <li className="card-item">
-                <i id='card-icon' className='fa fa-plane'></i>
-                    <p className='card-text'>{t( "card-text2")}</p>
+                <i id='card-icon' className='fa fa-clock-o'></i>
+                    <p className='card-text'>{t( "card-text7")}</p>
                 </li>
                 <li className="card-item">
-                <i id='card-icon' className='fa fa-building'></i>
-                    <p className='card-text'> {t( "card-text3")}</p>
+                <i id='card-icon' className='	fa fa-check'></i>
+                    <p className='card-text'> {t( "card-text8")}</p>
                 </li>
             </ul>
           <div style={{marginLeft:'10px'}}>  <Button name={t("button3")}/></div>
@@ -37,4 +39,4 @@ const Card = ({city,number,images}) => {
   )
 }
 
-export default Card
+export default Card2
