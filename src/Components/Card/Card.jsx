@@ -9,7 +9,7 @@ const Card = ({city,number,images}) => {
   return (
     <>
     <div className="card">
-    <img src={images} alt="" className='card-img'  width={250} height={300}/>
+    <img src={images} alt="" className='card-img'  />
         <div className="card-box">
             <h1 className='card-title'>{city}</h1>
             <p className='card-text'><i id='card-icon' className='fa fa-users'></i>{number}   {t("card-title")}<span className='cars-span'>{t("card-title1")}</span></p>

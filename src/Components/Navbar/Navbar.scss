@@ -23,13 +23,14 @@
 
 }
 .navbar-link{
-    font-size: 19px;
+    font-size: 17px;
     text-decoration: none;
     font-family: sans-serif;
     color:white;
 }
 #icon{
-    font-size: 26px;
+    padding-top: 5px;
+    font-size: 20px;
 }
 #icon-two{
     color:black;
@@ -42,6 +43,17 @@
     font-size: 28px;
     color:white
 }
+.navbar-select{
+    margin-top: 3px;
+    font-size: 14px;
+    width: 60px;
+    height: 25px;
+    border:1px solid white;
+    border-radius: 5px;
+    background:transparent;
+    color:white;
+}
+
 
 
 .navbar-item-three{
@@ -50,6 +62,7 @@
 .navbar-hr{
     opacity: 0.07;
     width: 100%;
+    margin:  10px 0;
 }
 .navbar-link-next{
     font-size: 19px;

@@ -1,9 +1,15 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 .container{
     width:1200px;
     margin:0 auto;
     box-sizing: border-box;
+  
 }
 
 .ant-select-selection-item{
-font-size: 18px;
+font-size: 14px;
 }

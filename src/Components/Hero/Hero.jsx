@@ -1,10 +1,6 @@
 import React from 'react';
 import { Carousel } from 'antd';
 import './Hero.scss'
-import dubai from '../../assets/dubai2.jpg'
-import antaliya from '../../assets/antalya2.jpg'
-import istanbul from '../../assets/istanbul.jpg'
-import sharm from '../../assets/sharm.jpg'
 import Herojon from '../Herojon/Herojon';
 const Hero = () => (
   <Carousel autoplay
@@ -28,7 +24,7 @@ const Hero = () => (
  
 
 
-   
+  
       <div className='hero-box2'>
       <Herojon city={'Istanbul'} aholi={'44.48 M'} area={'275.400 KM2'}price={'$946.000'}/>
       </div>

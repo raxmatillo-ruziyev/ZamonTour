@@ -32,6 +32,7 @@ const Navbar = () => {
                             <img src={logo} alt="Logo" className='logo' width={180} />
                         </Link>
                     </li>
+                    
                     <li className="navbar-item-one">
                         <Link to={'/'} className='navbar-link' href="#home">{t('home')}</Link>
                         <Link to={'/'} className='navbar-link' href="#about">{t('about')}</Link>
@@ -39,32 +40,15 @@ const Navbar = () => {
                         <Link to={'/'} className='navbar-link' href="#contact">{t('contact')}</Link>
                     </li>
                     <li className="navbar-item-two">
-                        <Space wrap>
-                            <Select
-                                defaultValue="UZ"
-                                style={{
-                                    width: 80,
-                                    height: 30,
-                                    fontSize: '14px'
-
-                                }}
-                                onChange={handleLanguageChange}
-                                options={[
-                                    {
-                                        value: 'uz',
-                                        label: 'UZ',
-                                    },
-                                    {
-                                        value: 'en',
-                                        label: 'EN',
-                                    },
-                                    {
-                                        value: 'ru',
-                                        label: 'RU',
-                                    },
-                                ]}
-                            />
-                        </Space>
+                      
+                        <select 
+                        className='navbar-select'
+                        defaultValue={'uz'}
+                        onChange={(e) => handleLanguageChange(e.target.value)}>
+                            <option value="uz">UZ</option>
+                            <option value="en">EN</option>
+                            <option value="ru">RU</option>
+                        </select>
                         <Link to={'https://t.me/zamonbiznestour'} className='navbar-link' href="#"><i id='icon' className='fa fa-telegram'></i></Link>
                         <Link to={'https://www.instagram.com/zamontour'} className='navbar-link' href="#"><i id='icon' className='fa fa-instagram'></i></Link>
                     </li>
@@ -90,32 +74,13 @@ const Navbar = () => {
                             <hr className='navbar-hr' />
                             <Link to={'/'} className='navbar-link-next' href="#contact">{t('contact')}</Link>
                             <hr className='navbar-hr' />
-                            <Space wrap>
-                                <Select
-                                    defaultValue="uz"
-                                    style={{
-                                        width: 120,
-                                        height: 30,
-                                        fontSize: '12px', // Adjust the font size here
-                                    }}
-                                    onChange={handleLanguageChange}
-                                    options={[
-                                        {
-                                            value: 'uz',
-                                            label: 'uz',
-                                        },
-                                        {
-                                            value: 'en',
-                                            label: 'en',
-                                        },
-                                        {
-                                            value: 'ru',
-                                            label: 'ru',
-                                        },
-                                    ]}
-                                />
-
-                            </Space>
+                            <select   className='navbar-select'
+                        defaultValue={'uz'}
+                        onChange={(e) => handleLanguageChange(e.target.value)}>
+                            <option value="uz">UZ</option>
+                            <option value="en">EN</option>
+                            <option value="ru">RU</option>
+                        </select>
                             <hr className='navbar-hr' />
                             <Link to={'https://t.me/zamonbiznestour'} className='navbar-link' href="#"><i id='icon-two' className='fa fa-telegram'></i></Link>
                             <hr className='navbar-hr' />
