@@ -56,7 +56,14 @@
 
 @media (max-width: 720px) {
     .wrap {
-        width: 100%; /* Ekran enidan to'la joylashishi */
+        margin: 5px;
+        width: calc(100% - 10px); /* Ekran enidan to'la joylashishi */
+    }
+}
+@media (max-width: 620px) {
+    .wrap {
+       
+        width:100%  /* Ekran enidan to'la joylashishi */
     }
 }
 
