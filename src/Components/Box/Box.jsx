@@ -53,7 +53,7 @@ const Box = ({textjon,shahar,davlat,imgg}) => {
         </ul>
         
       </div>
-      <hr  style={{width:1000,margin:"40px 0",opacity:0.2}} />
+   
       
       </div>
       </div>

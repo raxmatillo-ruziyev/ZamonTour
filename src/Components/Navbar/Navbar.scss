@@ -5,13 +5,14 @@
     --icon-color: black;
 }
 
-body {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+// body {
+//     margin: 0;
+//     padding: 0;
+//     box-sizing: border-box;
+// }
 
 .navbar {
+    margin: 0 auto;
     background: var(--navbar-bg-color);
     padding: 7px 0;
     position: fixed;

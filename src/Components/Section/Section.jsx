@@ -43,7 +43,7 @@ const Section = ({imgg,shahar,davlat,textjon}) => {
       </ul>
       
     </div>
-    <hr  style={{width:1000,margin:"40px 0",opacity:0.2}} />
+  
     
     </div>
 
@@ -73,7 +73,7 @@ const Section = ({imgg,shahar,davlat,textjon}) => {
       </ul>
       
     </div>
-    <hr  style={{width:1000,margin:"40px 0",opacity:0.2}} />
+  
     
     </div>
             </div>

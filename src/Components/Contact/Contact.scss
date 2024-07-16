@@ -1,10 +1,13 @@
 .contact {
- 
+  
+
+
+
     .container {
     //   display: flex;
     //   justify-content: space-between;
       align-items: center;
-      padding: 50px 20px;
+    //   padding: 50px 20px;
     }
   
     .contact-map {
@@ -73,7 +76,7 @@
   
       
       }
-    }
+    }}
   
     // Responsive Design
     @media (max-width: 768px) {
@@ -87,7 +90,7 @@
         margin-bottom: 30px;
       }
     }
-  }
+  
   
 .contact-btn{
     background:#00CED1;

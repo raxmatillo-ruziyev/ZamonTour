@@ -20,16 +20,16 @@ function App() {
    <Navbar/>
    <Hero/>
    <City/>
-   <hr style={{
+   {/* <hr style={{
     marginTop:100,
     opacity:0.2
-   }}/>
+   }}/> */}
    <City2/>
-   <hr style={{
+   {/* <hr style={{
     marginTop:100,
     opacity:0.2,
     marginBottom:30
-   }}/>
+   }}/> */}
    <Section/>
    <Service/>
    <Crousel/>
