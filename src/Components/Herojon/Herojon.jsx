@@ -19,7 +19,8 @@ const Herojon = ({ city, aholi, area, price }) => {
               <li className="herojon-item">
                 <div className="herojon-img-box">
 
-                  <UserOutlined />
+
+                  <i className='fa fa-user'></i>
                 </div>
                 <dir className="herojon-boxcha">
                   <p className="herojon-text">
@@ -29,7 +30,7 @@ const Herojon = ({ city, aholi, area, price }) => {
               </li>
               <li className="herojon-item">
                 <div className="herojon-img-box">
-                  <GlobalOutlined />
+            <i className='fa fa-globe'></i>
                 </div>
                 <div className="herojon-boxcha">
                   <p className="herojon-text">
@@ -38,14 +39,14 @@ const Herojon = ({ city, aholi, area, price }) => {
               <li className="herojon-item">
 
                 <div className="herojon-img-box">
-                <HomeFilled />
+            <i className='fa fa-home'></i>
                 </div>
                 <div className="herojon-boxcha">
                   <p className="herojon-text">
                     {t("price")} <br />
                   </p><b>{price}</b></div>
               </li>
-              <li className="herojon-item"><Button name={t("button3")} /></li>
+              <li className="herojon-item"><Button name={t("button2")} /></li>
             </ul>
           </div>
         </div>
