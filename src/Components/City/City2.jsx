@@ -119,6 +119,10 @@ const City2 = () => {
                         </button>
                     </div>
                 </div>
+                <hr style={{width:"100%", 
+                  marginTop:"90px",
+                  marginBottom:"40px"
+                }} />
             </div>
         </div>
     );

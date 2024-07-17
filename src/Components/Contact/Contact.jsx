@@ -67,20 +67,32 @@ const Contact = () => {
                     <h1 className='contact-title'>{t("contact-title")}</h1>
                     <ul className="contact-list">
                         <li className="contact-item">
-                            <label>{t("label-name")} <br />
-                                <input ref={nameRef} required type="text" placeholder={t("name")} />
+                            <div className='contact-item-box'>
+                          <div className='nimadir'>
+                          <label className='contact-label' >{t("label-name")} <br />
+                                <input className='contact-input' ref={nameRef} required type="text" placeholder={t("name")} />
                             </label>
-                            <label>{t("label-phone")} <br />
-                                <input ref={phoneRef} required type="number" placeholder={t("phone")} />
+                          </div>
+                         <div className='nimadir'>
+                         <label className='contact-label'> {t("label-phone")} <br />
+                                <input className='contact-input' ref={phoneRef} required type="number" placeholder={t("phone")} />
                             </label>
+                         </div>
+                            </div>
+                           
                         </li>
                         <li className="contact-item">
-                            <label>{t("label-people")} <br />
-                                <input ref={peopleRef} required type="text" placeholder={t("people")} />
+                            <div className='contact-item-box'>
+                           <div className='nimadir'>
+                           <label className='contact-label'>{ t("label-people")} <br />
+                                <input className='contact-input' ref={peopleRef} required type="text" placeholder={t("people")} />
                             </label>
-                            <label>{t("label-data")} <br />
-                                <input ref={dateRef} required type='date'></input>
-                            </label>
+                           </div>
+                          <div className='nimadir'>  <label className='contact-label' >{t("label-data")} <br />
+                                <input className='contact-input' ref={dateRef} required type='date'/>
+                            </label></div>
+                            </div>
+                           
                         </li>
                     </ul>
                     <label style={{

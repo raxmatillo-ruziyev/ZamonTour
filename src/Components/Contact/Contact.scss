@@ -1,109 +1,123 @@
 .contact {
-  
+  padding: 70px 0;
+  margin: 30px auto;
+  background:transparent;
+  .container {
+    padding: 0;
+    align-items: center;
+  }
 
-
-
-    .container {
-    //   display: flex;
-    //   justify-content: space-between;
-      align-items: center;
-    //   padding: 50px 20px;
-    }
-  
-    .contact-map {
+  .contact-map {
+    width: 100%;
+    height: 400px;
+    iframe {
       width: 100%;
-      height: 400px;
-      iframe {
-        width: 100%;
-        height: 100%;
-        border: 0;
-        border-radius: 5px;
-      }
-    }
-  
-    .contact-info {
-      width: 100%;
-      padding: 20px;
+      height: 100%;
+      border: 0;
       border-radius: 5px;
-         background-color: #f3f3f3;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  
-      .contact-title {
-        font-size: 24px;
-        margin: 40px 0;
-        line-height: 60px;
-        font-weight: 600;
-        font-size: 35px;
-        font-family: sans-serif;
-        color: #333;
-        text-align: center;
-      }
-  
-      .contact-list {
-        list-style: none;
-        padding: 0;
-  
-        .contact-item {
-          display: flex;
-          justify-content: space-between;
-          margin-bottom: 15px;
-  
-          label {
-            width: 45%;
+    }
+  }
+
+  .contact-info {
+    width: 100%;
+    padding:  10px  10px 40px 10px;
+    border-radius: 10px;
+    background-color: #f3f3f3;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    .contact-title
+{
+      font-size: 24px;
+      margin: 40px 0;
+      line-height: 60px;
+      font-weight: 600;
+      font-family: sans-serif;
+      color: #333;
+      text-align: center;
+    }
+
+    .contact-list {
+      list-style: none;
+      padding: 0;
+
+      .contact-item-box{
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 15px;
+
+        .nimadir{
+          width: 45%;
+          font-family: sans-serif;
+          font-size: 18px;
+        }
+        .contact-label {
+          width: 45%;
+          font-family: sans-serif;
+          font-size: 18px;
+
+          .contact-input {
             font-family: sans-serif;
             font-size: 18px;
-  
-            input{
-              font-family: sans-serif;
-              font-size: 18px;
-              width: 100%;
-              padding: 8px ;
-              margin: 20px 0;
-              opacity: 0.5;
-              border: 1px solid #ccc;
-              border-radius: 50px;
-              padding-left: 15px;
-              box-sizing: border-box;
-              -webkit-border-radius: 50px;
-              -moz-border-radius: 50px;
-              -ms-border-radius: 50px;
-              -o-border-radius: 50px;
-}
-            
-          
+            width: 100%;
+            padding: 8px;
+            margin: 20px 0;
+            opacity: 0.5;
+            border: 1px solid #ccc;
+            border-radius: 50px;
+            padding-left: 15px;
+            box-sizing: border-box;
+            -webkit-border-radius: 50px;
+            -moz-border-radius: 50px;
+            -ms-border-radius: 50px;
+            -o-border-radius: 50px;
           }
         }
-  
-      
-      }
-    }}
-  
-    // Responsive Design
-    @media (max-width: 768px) {
-      .container {
-        flex-direction: column;
-      }
-  
-      .contact-map,
-      .contact-info {
-        width: 100%;
-        margin-bottom: 30px;
       }
     }
-  
-  
-.contact-btn{
-    background:#00CED1;
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 50px;
-    cursor: pointer;
-    font-size: 17px;
+  }
+}
+
+// Responsive Design
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column;
+  }
+
+  .contact-map,
+  .contact-info {
     width: 100%;
-    margin: 10px auto;
-    -webkit-border-radius: 50px;
-    -moz-border-radius: 50px;
-    -ms-border-radius: 50px;
-    -o-border-radius: 50px;
-}  
+    margin-bottom: 30px;
+  }
+}
+
+.contact-btn {
+  background: #00ced1;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  font-size: 17px;
+  width: 100%;
+  margin: 10px auto;
+  -webkit-border-radius: 50px;
+  -moz-border-radius: 50px;
+  -ms-border-radius: 50px;
+  -o-border-radius: 50px;
+}
+
+@media (max-width: 520px) {
+  .contact-item-box {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    width: 100%;
+    font-size: 18px;
+    margin: 0 auto;
+  }
+  .contact-info{
+    .nimadir{
+      width: 100%  !important;
+    }
+  }
+ 
+}

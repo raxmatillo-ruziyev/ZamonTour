@@ -1,104 +1,216 @@
 /* author: https://codepen.io/danielwuachin/pen/NWoqxjv
 Jose Rodriguez */
-  
-  .wrapper {
-    align-items: center;
-    display: flex;
-    height: 100vh;
-    justify-content: center;
-    width: 100%;
+
+* {
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: #eeeeea;
+}
+
+.crousel-wrapper {
+  align-items: center;
+  display: flex;
+  height: 80vh;
+  justify-content: center;
+  width: 100%;
+}
+
+.crousel-container {
+  display: flex;
+  flex-wrap: nowrap;
+  height: 400px;
+  justify-content: start;
+}
+
+.crousel {
+  align-items: flex-end;
+  background-size: cover;
+  border-radius: 2rem;
+  box-shadow: 0px 10px 30px -5px rgba(0,0,0,0.8);
+  cursor: pointer;
+  display: flex;
+  margin: 0 10px;
+  overflow: hidden;
+  transition: .6s cubic-bezier(.28,-0.03,0,.99);
+  width: 80px;
+}
+
+.crousel > .row {
+  color: white;
+  display: flex;
+  flex-wrap: nowrap;
+}
+
+.crousel > .row > .icon {
+  align-items: center;
+  background: white;
+  border-radius: 50%;
+  color: black;
+  display: flex;
+  justify-content: center;
+  margin: 15px;
+  width: 50px;
+  height: 50px;
+}
+
+.crousel > .row > .description {
+  display: flex;
+  flex-direction: column;
+  height: 80px;
+  justify-content: center;
+  opacity: 0;
+  overflow: hidden;
+  transform: translateY(30px);
+  transition: all .3s ease;
+  transition-delay: .3s;
+  width: 520px;
+}
+
+.description p {
+  color: #b0b0ba;
+  padding-top: 5px;
+}
+
+.description h4 {
+  text-transform: uppercase;
+}
+
+.crousel-input {
+  display: none;
+}
+
+.crousel-input:checked + label {
+  width: 600px;
+}
+
+.crousel-input:checked + label .description {
+  opacity: 1 !important;
+  transform: translateY(0) !important;
+}
+
+.crousel[for="c1"] {
+  background-image: url(/src/assets/dubai.jpg);
+}
+
+.crousel[for="c2"] {
+  background-image: url(/src/assets/antalya.jpg);
+}
+
+.crousel[for="c3"] {
+  background-image: url(/src/assets/istanbul.jpg);
+}
+
+.crousel[for="c4"] {
+  background-image: url(/src/assets/sharm.jpg);
+}
+
+.crousel[for="c5"] {
+  background-image: url(/src/assets/images.jpeg);
+}
+
+/* Responsiveness for crousel */
+
+@media (max-width: 1020px) {
+  .crousel {
+    width: 70px;
   }
-  
-  .containerjon {
-    display: flex;
-    flex-wrap: nowrap;
-    height: 400px;
-    justify-content: start;
+
+
+
+  .crousel-input:checked + label {
+    width: 500px;
   }
-  
-  .card {
-    align-items: flex-end;
-    background-size: cover;
-    border-radius: .75rem;
-    border-radius: 2rem;
-    box-shadow: 0px 10px 30px -5px rgba(0,0,0,0.8);
-    cursor: pointer;
-    display: flex;
-    margin: 0 10px;
-    overflow: hidden;
-    transition: .6s cubic-bezier(.28,-0.03,0,.99);
-    width: 80px;
+  .crousel-wrapper{
+    height: 70vh;
   }
-  
-  .card > .row {
-    color: white;
-    display: flex;
-    flex-wrap: nowrap;
+}
+@media (max-width: 920px) {
+  .crousel {
+    width: 70px;
+    margin: 0 5px;
   }
-  
-  .card > .row > .icon {
-    align-items: center;
-    background: #223;
-    border-radius: 50%;
-    color: white;
-    display: flex;
-    justify-content: center;
-    margin: 15px;
-    width: 50px;
+  .crousel-wrapper{
+    height: 65vh;
   }
-  
-  .card > .row > .description {
-    display: flex;
-    flex-direction: column;
-    height: 80px;
-    justify-content: center;
-    opacity: 0;
-    overflow: hidden;
-    transform: translateY(30px);
-    transition: all .3s ease;
-    transition-delay: .3s;
-    width: 520px;
+ 
+
+  .crousel-input:checked + label {
+    width: 470px;
   }
-  
-  .description p {
-    color: #b0b0ba;
-    padding-top: 5px;
+}
+
+@media (max-width: 820px) {
+  .crousel {
+    width: 70px;
   }
-  
-  .description h4 {
-    text-transform: uppercase;
-  }
-  
-  input {
+  .crousel[for=c5]{
     display: none;
   }
-  
-  input:checked + label {
-    width: 600px;
+ 
+
+  .crousel-input:checked + label {
+    width: 450px;
   }
-  
-  input:checked + label .description {
-    opacity: 1 !important;
-    transform: translateY(0) !important;
+}
+
+@media (max-width: 720px) {
+  .crousel {
+    width: 60px;
   }
-  
-  .card[for="c1"] {
-    background-image: url('https://hips.hearstapps.com/hmg-prod/images/first-day-of-winter-solstice-2021-1638278570.jpg?crop=0.8337777777777778xw:1xh;center,top&resize=1200:*');
+
+  .crousel-input:checked + label {
+    width: 380px;
   }
-  
-  .card[for="c2"] {
-    background-image: url('https://hips.hearstapps.com/hmg-prod/images/first-day-of-winter-solstice-2021-1638278570.jpg?crop=0.8337777777777778xw:1xh;center,top&resize=1200:*');
+}
+
+@media (max-width: 620px) {
+  .crousel {
+    width: 60px;
   }
-  
-  .card[for="c3"] {
-    background-image: url('https://hips.hearstapps.com/hmg-prod/images/first-day-of-winter-solstice-2021-1638278570.jpg?crop=0.8337777777777778xw:1xh;center,top&resize=1200:*');
+  .crousel[for=c4]{
+    display: none;
   }
-  
-  .card[for="c4"] {
-    background-image: url('https://hips.hearstapps.com/hmg-prod/images/first-day-of-winter-solstice-2021-1638278570.jpg?crop=0.8337777777777778xw:1xh;center,top&resize=1200:*');
+ 
+
+  .crousel-input:checked + label {
+    width: 350px;
   }
-  
-  
-  
-  
-  
+}
+
+@media (max-width: 520px) {
+  .crousel {
+    width: 80px;
+  }
+
+  .crousel-input:checked + label {
+    width: 200px;
+  }
+}
+
+@media (max-width: 420px) {
+  .crousel {
+    width: 30px;
+  }
+  .crousel[for=c3]{
+    display: none;
+  }
+
+  .crousel-input:checked + label {
+    width: 250px;
+  }
+}
+
+@media (max-width: 320px) {
+  .crousel {
+    width: 20px;
+  }
+
+  .crousel-input:checked + label {
+    width: 200px;
+  }
+}
