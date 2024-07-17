@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Button, Drawer, Modal, Select, Space } from 'antd';
 import './Navbar.scss';
 import logo from '../../assets/zamon.svg';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 
 const Navbar = () => {
@@ -24,7 +24,7 @@ const Navbar = () => {
     };
 
     return (
-        <div className="navbar">
+        <div className="navbar" >
             <div className="container">
                 <ul className="navbar-list">
                     <li className="navbar-item">
@@ -34,10 +34,10 @@ const Navbar = () => {
                     </li>
                     
                     <li className="navbar-item-one">
-                        <Link to={'/'} className='navbar-link' href="#home">{t('home')}</Link>
-                        <Link to={'/'} className='navbar-link' href="#about">{t('about')}</Link>
-                        <Link to={'/'} className='navbar-link' href="#tour">{t('tour')}</Link>
-                        <Link to={'/'} className='navbar-link' href="#contact">{t('contact')}</Link>
+                        <a   className='navbar-link' href="#home">{t('home')}</a>
+                        <a   className='navbar-link' href="#about">{t('about')}</a>
+                        <a   className='navbar-link' href="#tour">{t('tour')}</a>
+                        <a   className='navbar-link' href="#contact">{t('contact')}</a>
                     </li>
                     <li className="navbar-item-two">
                       
@@ -66,13 +66,13 @@ const Navbar = () => {
 
                             }}>
 
-                            <Link to={'/'} className='navbar-link-next' href="#home">{t('home')}</Link>
+                            <a  className='navbar-link-next' href="#home">{t('home')}</a>
                             <hr className='navbar-hr' />
-                            <Link to={'/'} className='navbar-link-next' href="#about">{t('about')}</Link>
+                            <a  className='navbar-link-next' href="#about">{t('about')}</a>
                             <hr className='navbar-hr' />
-                            <Link to={'/'} className='navbar-link-next' href="#tour">{t('tour')}</Link>
+                            <a  className='navbar-link-next' href="#tour">{t('tour')}</a>
                             <hr className='navbar-hr' />
-                            <Link to={'/'} className='navbar-link-next' href="#contact">{t('contact')}</Link>
+                            <a  className='navbar-link-next' href="#contact">{t('contact')}</a>
                             <hr className='navbar-hr' />
                             <select   className='navbar-select'
                         defaultValue={'uz'}

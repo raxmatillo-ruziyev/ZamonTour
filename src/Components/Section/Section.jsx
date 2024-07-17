@@ -5,11 +5,12 @@ import afr from '../../assets/afr.jpg'
 import air from '../../assets/airplane.jpg'
 import Button from '../Button/Button';
 import { Link } from 'react-router-dom';
+
 const Section = ({ imgg, shahar, davlat, textjon }) => {
     const { t, i18n } = useTranslation();
     return (
         <div>
-            <div className="section">
+            <div className="section" id='about'>
                 <div className="container">
                     <h1 className='section-title'>
                         {t("sectionTitle")}
@@ -37,13 +38,9 @@ const Section = ({ imgg, shahar, davlat, textjon }) => {
                                     <p className="box-text">{t("textjon1")}</p>
                                 </li>
 
-
-                                {/* <hr  className='box-hr'/> */}
-
                             </ul>
 
                         </div>
-
 
                     </div>
                     <hr style={{
@@ -51,7 +48,6 @@ const Section = ({ imgg, shahar, davlat, textjon }) => {
                         marginTop: "60px",
                         marginBottom: "50px"
                     }} />
-
 
                     <div className="box">
 
@@ -71,14 +67,10 @@ const Section = ({ imgg, shahar, davlat, textjon }) => {
                                 <li className="box-item">
                                     <p className="box-text">{t("textjon2")}</p>
                                 </li>
-                                {/* <hr className='box-hr' /> */}
-
-
 
                             </ul>
 
                         </div>
-
 
                     </div>
                     <hr style={{
@@ -88,10 +80,8 @@ const Section = ({ imgg, shahar, davlat, textjon }) => {
                     }} />
                 </div>
             </div>
-
-
         </div>
     )
 }
 
-export default Section
+export default Section;

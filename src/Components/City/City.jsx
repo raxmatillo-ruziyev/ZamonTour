@@ -85,7 +85,7 @@ const City = () => {
           ]
     };
     return (
-        <div className="city">
+        <div className="city" id="tour">
             <div className="container">
                 <h1 className="city-title">{t("city-title")}</h1>
                 <p className="city-text">{t("city-rext")}</p>

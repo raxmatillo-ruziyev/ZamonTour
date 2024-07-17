@@ -8,7 +8,7 @@ const Herojon = ({ city, aholi, area, price }) => {
   return (
 
     <div>
-      <div className="herojon">
+      <div className="herojon" id='home'>
         <div className="container">
           <div className="herojon-box">
             <h2 className="herojon-subtitle">{t("hero")}</h2>

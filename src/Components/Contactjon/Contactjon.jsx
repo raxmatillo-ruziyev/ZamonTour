@@ -7,7 +7,7 @@ const Contactjon = () => {
     const {t,i18n} = useTranslation();
   return (
     <>
-    <div className="contactjon">
+    <div className="contactjon" id='contact'>
         <div className="container">
             <div className="contactjon-box">
                 <h3 className="contactjon-subtitle">{t("contactjon-title")}</h3>
