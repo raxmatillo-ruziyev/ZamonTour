@@ -93,22 +93,22 @@ const City = () => {
 
                     <Slider ref={slider => (sliderRef = slider)} {...settings}>
                         <div className="slide-card">
-                            <Card city={'Canada'} number={"438"} images={canada} />
+                            <Card city={t("city11")} number={"438"} images={canada} />
                         </div>
                         <div className="slide-card">
-                            <Card city={'Dubai'} number={"385"} images={dubai}/>
+                            <Card city={t("city12")} number={"385"} images={dubai}/>
                         </div>
                         <div className="slide-card">
-                            <Card city={'Antalya'} number={"278"} images={antalya}/>
+                            <Card city={t("city13")} number={"278"} images={antalya}/>
                         </div>
                         <div className="slide-card">
-                            <Card city={'USA'} number={"128"} images={usa1}/>
+                            <Card city={t("city15")} number={"128"} images={usa1}/>
                         </div>
                         <div className="slide-card">
-                            <Card city={'Europion Union'} number={"486"} images={europe2}/>
+                            <Card city={t("city16")} number={"486"} images={europe2}/>
                         </div>
                         <div className="slide-card">
-                            <Card city={'Sharm El-Sheikh'} number={"355"} images={sharm} />
+                            <Card city={t("city14")} number={"355"} images={sharm} />
                         </div>
                     </Slider>
                     <div style={{ textAlign: "center" }}>

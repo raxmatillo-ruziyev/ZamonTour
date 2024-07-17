@@ -13,7 +13,7 @@ const Herojon = ({ city, aholi, area, price }) => {
           <div className="herojon-box">
             <h2 className="herojon-subtitle">{t("hero")}</h2>
             <h1 className="herojon-title">{city}</h1>
-            <Button name={t('button1')} />
+           <a href="#contact"> <Button name={t('button1')} /></a>
              <br /><br /><br /><br />
             <ul className="herojon-list">
               <li className="herojon-item">
@@ -46,7 +46,7 @@ const Herojon = ({ city, aholi, area, price }) => {
                     {t("price")} <br />
                   </p><b>{price}</b></div>
               </li>
-              <li className="herojon-item"><Button name={t("button2")} /></li>
+              <li className="herojon-item"><a href="#contact"><Button name={t("button2")} /></a></li>
             </ul>
           </div>
         </div>

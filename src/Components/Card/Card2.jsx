@@ -16,7 +16,7 @@ const Card2 = ({city,number,images}) => {
             <li className="card-item">  
              <p className='card-text'><i id='card-icon' className='fa fa-users'></i>    {number}    {t("card-title")}</p></li>
             <hr className='card-hr' />
-            <h2 className="card-subtitle">{t( "card-subtitle2")}</h2>
+            <h2 className="card-subtitle">{t("card-subtitle2")}</h2>
             <ul className='card-list'>
                 <li className="card-item">  
              <i id='card-icon' className='fa fa-tags'></i>

@@ -3,7 +3,7 @@ import './Button.scss'
 const Button = ({name}) => {
   return (
     <div>
-      <button className='btn'>{name}</button>
+     <a href="#contact"> <button className='btn'>{name}</button></a>
     </div>
   )
 }

@@ -194,23 +194,17 @@ body {
 
 @media (max-width: 420px) {
   .crousel {
-    width: 30px;
+    width: 80px;
   }
   .crousel[for=c3]{
     display: none;
   }
 
   .crousel-input:checked + label {
-    width: 250px;
+    width: 200px;
   }
 }
 
 @media (max-width: 320px) {
-  .crousel {
-    width: 20px;
-  }
-
-  .crousel-input:checked + label {
-    width: 200px;
-  }
+ 
 }

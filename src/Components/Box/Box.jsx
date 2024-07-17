@@ -31,15 +31,21 @@ const Box = ({ textjon, shahar, davlat, imgg }) => {
                             <div className="content-box">
                                 <ul className="content-list">
                                     <li className="content-item">
-                                        <i className='fa fa-user'></i>
-                                        <p className='content-text'> 8.66 mln kishi</p>
+                                        <i style={{
+                                            margin:"5px 0"
+                                        }}  className='fa fa-user'> </i>
+                                        <p className='content-text'>  8.66 M</p>
                                     </li>
                                     <li className="content-item">
-                                        <i className='fa fa-globe'></i>
+                                        <i style={{
+                                            margin:"5px 0"
+                                        }} className='fa fa-globe'></i>
                                         <p className='content-text'> 4.114 km2</p>
                                     </li>
                                     <li className="content-item">
-                                        <i className='fa fa-home'></i>
+                                        <i style={{
+                                            margin:"5px 0"
+                                        }} className='fa fa-home'></i>
                                         <p className='content-text'> $1.100.200</p>
                                     </li>
                                 </ul>
@@ -48,7 +54,7 @@ const Box = ({ textjon, shahar, davlat, imgg }) => {
                         </li>
                         <hr className='box-hr' />
                         <li className="box-item">
-                            <Link to={'/'}>  <button className='box-button'>{t("button4")} </button></Link>
+                            <a href='#contact'> <button className='box-button'>{t("button4")} </button></a>
                         </li>
                     </ul>
 

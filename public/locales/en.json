@@ -17,6 +17,7 @@
   "card-title2": "Check Ins ",
   "card-title1": "/person",
   "card-subtitle": "Deal Includes:",
+  "card-subtitle2": "Deal Includes:",
   "card-text1": "5 Days Trip   Hotel Includet",
   "card-text2": "Airplane Bill Included     ",
   "card-text3": " Daily Places Visit",
@@ -65,5 +66,22 @@
   "wrapTitle2": "Contact Us via Email",
   "wrapTitle3": "Visit Our Offices",
   "contactjon-title": "Make Your Reservation",
-  "contactjon-subtitle": "Book Prefered Deal Here"
+  "contactjon-subtitle": "Book Prefered Deal Here",
+  "tog'ri": "Your message was successfully sent",
+  "xatolik1": "An error occurred",
+  "xatolik": "Please fill out the field",
+  "city11": "Canada",
+  "city12": "Dubai",
+  "city15": "USA",
+  "city14": "Sharm El-Sheikh",
+  "city13": "Antalya",
+  "city16": "England",
+  "city17": "India",
+  "city18": "Saudi Arabia",
+  "city19": "China",
+  "city20": "Oman",
+  "city21": "Europe",
+  "city22": "Hong Kong",
+  "city23":"Istanbul"
+
 }
