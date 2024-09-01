@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Modal } from 'antd';
 import './Navbar.scss';
-import logo from '../../assets/zamon.svg';
+import logo from '../../assets/logojon.png';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 
