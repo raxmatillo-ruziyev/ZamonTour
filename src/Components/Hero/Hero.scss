@@ -1,125 +1,82 @@
+.hero-slider {
+    width: 100%;
 
-.hero-box,
-.hero-box1,
-.hero-box2,
-.hero-box3 {
-    height: 750px;
-    margin-top:20px ;
-    min-height: 500px; /* Ensure minimum height of 500px */
-    color: #fff;
-    line-height: normal; /* Remove line-height */
-    text-align: center;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
-}
+    // Balandlikni endi Herojon o'zi belgilaydi (mobilda kontent ko'paysa o'zi cho'ziladi),
+    // shuning uchun eski 750px / 1000px / 1050px va 10 ta bir xil media-query kerak emas
+    &__slide {
+        display: flex;
+        align-items: center;
+        background-color: #0b4f52; // rasm yuklanguncha ko'rinadigan rang
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
 
-.hero-box {
-    background-image: url(/src/assets/dubai2.jpg);
-}
+        // Rasmlar: avval ishlab turgan usul (CSS url)
+        &--dubai {
+            background-image: url(/src/assets/dubai2.jpg);
+        }
 
-.hero-box1 {
-    background-image: url(/src/assets/antalya2.jpg);
-}
+        &--antalya {
+            background-image: url(/src/assets/antalya2.jpg);
+        }
 
-.hero-box2 {
-    background-image: url(/src/assets/istanbul.jpg);
-}
+        &--istanbul {
+            background-image: url(/src/assets/istanbul.jpg);
+        }
 
-.hero-box3 {
-    background-image: url(/src/assets/sharm.jpg);
-}
-
-/* Media queries for smaller screens */
-@media (max-width: 1220px) {
-    .hero-box,
-    .hero-box1,
-    .hero-box2,
-    .hero-box3 {
-        height: 750px;
+        &--sharm {
+            background-image: url(/src/assets/sharm.jpg);
+        }
     }
-}
 
-@media (max-width: 1120px) {
-    .hero-box,
-    .hero-box1,
-    .hero-box2,
-    .hero-box3 {
-        height: 750px;
+    // Faqat faol slaydda animatsiya o'ynaydi: slayd almashganda matn qaytadan yumshoq chiqadi
+    .slick-slide:not(.slick-active) {
+        .herojon__eyebrow,
+        .herojon__title,
+        .herojon__actions,
+        .herojon__card {
+            animation: none;
+        }
     }
-}
 
-@media (max-width: 1020px) {
-    .hero-box,
-    .hero-box1,
-    .hero-box2,
-    .hero-box3 {
-        height: 750px;
-    }
-}
+    // ---------- Pastdagi chiziqli pagination ----------
+    // Aniqlik uchun .ant-carousel bilan birga yozilgan: antd stillarini ustidan bosadi
+    &.ant-carousel {
+        .slick-dots,
+        .slick-dots-bottom {
+            bottom: 28px;
+        }
 
-@media (max-width: 920px) {
-    .hero-box,
-    .hero-box1,
-    .hero-box2,
-    .hero-box3 {
-        height: 750px;
-    }
-}
+        .slick-dots li {
+            width: 28px;
+            height: 4px;
+            margin: 0 4px;
+            transition: width 0.4s ease;
 
-@media (max-width: 820px) {
-    .hero-box,
-    .hero-box1,
-    .hero-box2,
-    .hero-box3 {
-        height: 750px;
-    }
-}
+            button {
+                height: 4px;
+                border-radius: 4px;
+                background: rgba(255, 255, 255, 0.45);
+                opacity: 1;
+                transition: background-color 0.3s ease;
 
-@media (max-width: 720px) {
-    .hero-box,
-    .hero-box1,
-    .hero-box2,
-    .hero-box3 {
-        height: 750px;
-    }
-}
+                // eski "nuqta" belgisi chiziq tagida ko'rinmasin
+                &::before {
+                    display: none;
+                }
+            }
 
-@media (max-width: 620px) {
-    .hero-box,
-    .hero-box1,
-    .hero-box2,
-    .hero-box3 {
-        height: 750px;
-    }
-}
+            &:hover button {
+                background: rgba(255, 255, 255, 0.8);
+            }
 
-@media (max-width: 520px) {
-    .hero-box,
-    .hero-box1,
-    .hero-box2,
-    .hero-box3 {
-        height: 1000px;
-    }
-}
+            &.slick-active {
+                width: 48px;
 
-@media (max-width: 420px) {
-    .hero-box,
-    .hero-box1,
-    .hero-box2,
-    .hero-box3 {
-        height: 1050px;
-    }
-}
-
-@media (max-width: 320px) {
-    .hero-box,
-    .hero-box1,
-    .hero-box2,
-    .hero-box3 {
-        height: 1050px;
+                button {
+                    background: var(--brand, #00ced1);
+                }
+            }
+        }
     }
 }

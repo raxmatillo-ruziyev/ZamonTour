@@ -1,26 +1,73 @@
-.btn{
-    padding: 10px 30px ;
-    border-radius:30px;
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif ;
-    font-size: 13px;
-    color:white;
-    border:none;
-    background:#00CED1;
-  
-        &:hover{
-            color:#00CED1;
-            background:white;
-            transition: 0.4s;
-            cursor: pointer;
-            -webkit-transition: 0.4s;
-            -moz-transition: 0.4s;
-            -ms-transition: 0.4s;
-            -o-transition: 0.4s;
-}
+// Ranglar Navbar.scss dagi :root o'zgaruvchilaridan olinadi (zaxira qiymatlari bilan)
 
-    
+.ui-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    min-height: 44px; // barmoq bilan bosish uchun qulay o'lcham
+    margin: 0;
+    padding: 12px 28px;
+    border: 0;
+    border-radius: 999px;
+    font-family: 'Manrope', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    line-height: 1;
+    white-space: nowrap;
+    text-decoration: none;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease,
+        color 0.2s ease;
 
+    &:focus-visible {
+        outline: 2px solid var(--brand-deep, #007f82);
+        outline-offset: 3px;
+    }
 
+    // Asosiy: firuza fon, to'q matn (oq matn firuzada o'qilmas edi)
+    &--primary {
+        background: var(--brand, #00ced1);
+        color: var(--ink, #12383a);
+        box-shadow: 0 10px 24px -12px rgba(0, 206, 209, 0.9);
 
-   
+        &:hover {
+            background: #2fe0e3;
+            transform: translateY(-2px);
+            box-shadow: 0 14px 28px -12px rgba(0, 206, 209, 0.95);
+        }
+    }
+
+    // To'q teal: oq kartalar ustida
+    &--dark {
+        background: #0b4f52;
+        color: #fff;
+
+        &:hover {
+            background: #0e6165;
+            transform: translateY(-2px);
+        }
+    }
+
+    // Ikkilamchi: faqat chiziq
+    &--ghost {
+        background: transparent;
+        color: var(--ink, #12383a);
+        box-shadow: inset 0 0 0 1.5px rgba(18, 56, 58, 0.25);
+
+        &:hover {
+            background: rgba(0, 206, 209, 0.12);
+            box-shadow: inset 0 0 0 1.5px var(--brand-deep, #007f82);
+        }
+    }
+
+    // Bosilgan paytda (variantlardan keyin yozilgan, shuning uchun hover ustidan ishlaydi)
+    &:active {
+        transform: translateY(0) scale(0.98);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        transition: none;
+    }
 }
