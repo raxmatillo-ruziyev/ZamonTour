@@ -1,69 +1,69 @@
+// Ranglar Navbar.scss dagi :root o'zgaruvchilaridan olinadi (zaxira qiymatlari bilan)
 
-/* Responsivlik uchun .wrap CSS larini qo'shish */
-
-.wrap-icon {
-    font-size: 30px;
-    background: rgba(210, 207, 207, 0.58);
-    width: 50px;
-    height: 50px;
-    padding: 10px 17px;
-    margin: 15px;
-    border-radius: 50%;
-}
-
-.wrap-title {
-    font-size: 23px;
-    // height: 40px;
-    font-family: sans-serif;
-    font-weight: 600;
-    margin: 15px;
-}
-
-.wrap-link {
-    width: 99%;
-    font-size: 16px;
-    height: 30px;
-    font-family: sans-serif;
-    font-weight: 400;
-    margin: 15px;
-    color: #00CED1;
-    text-decoration: none;
-}
-.wrap {
-    width: calc(100% - 10px); /* Ekran enidan 100px kamroq bo'lib 100px joy qo'yish */
-    max-width: 300px; /* Maksimal kenglik 300px */
-    height: 200px;
-    box-shadow: 1px 1px 3px 2px rgb(236, 232, 232);
-    padding: 30px;
-    border-radius: 5px;
+.contact-card {
+    display: flex;
+    flex-direction: column;
     align-items: center;
+    gap: 10px;
+    height: 100%;
+    padding: 28px 24px;
+    color: var(--ink, #12383a);
+    font-family: 'Manrope', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
     text-align: center;
-    background: white;
-    margin: 20px auto; /* Yuqoridan va pastdan 20px margin */
-}
+    background: #fff;
+    border-radius: 24px;
+    box-shadow: 0 24px 40px -24px rgba(0, 0, 0, 0.5);
+    transition: transform 0.3s ease;
 
-@media (max-width: 920px) {
-    .wrap {
-        width: calc(100% - 10px); /* Ekran enidan 200px kamroq bo'lib 200px joy qo'yish */
+    @media (hover: hover) {
+        &:hover {
+            transform: translateY(-4px);
+        }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        transition: none;
+
+        &:hover {
+            transform: none;
+        }
+    }
+
+    &__icon {
+        display: grid;
+        place-items: center;
+        width: 56px;
+        height: 56px;
+        border-radius: 50%;
+        background: rgba(0, 206, 209, 0.14);
+        color: var(--brand-deep, #007f82);
+        font-size: 24px;
+    }
+
+    &__title {
+        margin: 6px 0 0;
+        font-size: 18px;
+        font-weight: 800;
+        line-height: 1.2;
+    }
+
+    &__link {
+        color: #0b4f52;
+        font-size: 16px;
+        font-weight: 600;
+        line-height: 1.4;
+        text-decoration: none;
+        overflow-wrap: anywhere;
+
+        &:hover {
+            color: var(--brand-deep, #007f82);
+            text-decoration: underline;
+        }
+
+        &:focus-visible {
+            outline: 2px solid var(--brand-deep, #007f82);
+            outline-offset: 3px;
+            border-radius: 4px;
+        }
     }
 }
-
-@media (max-width: 820px) {
-    .wrap {
-        width: calc(100% - 10px); /* Ekran enidan 100px kamroq bo'lib 100px joy qo'yish */
-    }
-}
-
-@media (max-width: 720px) {
-    .wrap {
-        margin: 5px;
-        width: calc(100% - 10px); /* Ekran enidan to'la joylashishi */
-    }
-}
-@media (max-width: 620px) {
-    .wrap {
-       
-        width:100%  /* Ekran enidan to'la joylashishi */
-    }
-}
-

@@ -1,235 +1,223 @@
-import React, { useRef, useState } from 'react';
-import { Modal, Button as AntButton } from 'antd';
-import './Contact.scss';
+import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import Button from '../Button/Button';
+import './Contact.scss';
+
+// Forma ma'lumotlari SERVERGA yuboriladi. Telegram tokeni brauzerda emas, serverda turadi.
+// Manzilni .env faylida VITE_CONTACT_ENDPOINT bilan o'zgartirish mumkin, bo'lmasa /api/contact.
+const ENDPOINT = import.meta.env.VITE_CONTACT_ENDPOINT || '/api/contact';
+
+// Xarita: sizning manzilingiz (oldingi kodda London Eye turgan edi)
+const MAP_SRC = `https://maps.google.com/maps?q=${encodeURIComponent(
+    '15/25 Chilanzar-9, Tashkent'
+)}&z=15&output=embed`;
+
+const INITIAL = {
+    name: '',
+    phone: '',
+    people: '',
+    date: '',
+    destination: '',
+    country: '',
+    website: '', // spam tuzog'i: odam to'ldirmaydi
+};
+
+const CITIES = ['shahar4', 'shahar', 'shahar5', 'shahar6'];
+const COUNTRIES = ['davlat', 'davlat4', 'davlat5', 'davlat6'];
+const CITY_FIRST = [...CITIES, ...COUNTRIES];
+const COUNTRY_FIRST = [...COUNTRIES, ...CITIES];
+
+const REQUIRED = ['name', 'phone', 'people', 'date', 'destination', 'country'];
+
+const Field = ({ label, children }) => (
+    <label className="contact__field">
+        <span className="contact__label">{label}</span>
+        {children}
+    </label>
+);
+
+const Select = ({ name, value, onChange, keys, t }) => (
+    <select className="contact__control" name={name} value={value} onChange={onChange} required>
+        <option value="" disabled>
+            —
+        </option>
+        {keys.map((key) => (
+            <option key={key} value={t(key)}>
+                {t(key)}
+            </option>
+        ))}
+    </select>
+);
 
 const Contact = () => {
     const { t } = useTranslation();
-    const [formData, setFormData] = useState({
-        name: '',
-        phone: '',
-        people: '',
-        date: '',
-        selectName: '',
-        selectTitle: ''
-    });
-    const [isModalVisible, setIsModalVisible] = useState(false);
-    const [modalMessage, setModalMessage] = useState('');
+    const [form, setForm] = useState(INITIAL);
+    const [status, setStatus] = useState(null); // { type: 'ok' | 'error', text }
+    const [loading, setLoading] = useState(false);
 
-    const nameRef = useRef(null);
-    const phoneRef = useRef(null);
-    const peopleRef = useRef(null);
-    const dateRef = useRef(null);
-    const selectNameRef = useRef(null);
-    const selectTitleRef = useRef(null);
+    const today = new Date().toISOString().slice(0, 10);
 
-    const sendTelegramMessage = (message) => {
-        const token = '7027326228:AAHE5ePNUpvgI5uSE6sL1Y4a61Xcw9GzC6Y';
-        const chatId = '6771255129';
-        const url = `https://api.telegram.org/bot${token}/sendMessage?chat_id=${chatId}&text=${encodeURIComponent(message)}`;
-
-        fetch(url)
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error('Network response was not ok');
-                }
-                return response.json();
-            })
-            .then(data => {
-                console.log(data);
-                showModal(t("tog'ri"));
-            })
-            .catch(error => {
-                console.error('There has been a problem with your fetch operation:', error);
-                showModal(t("xatolik1"));
-            });
+    const handleChange = (e) => {
+        const { name, value } = e.target;
+        setForm((prev) => ({ ...prev, [name]: value }));
     };
 
+    const handleSubmit = async (e) => {
+        e.preventDefault();
 
-    const handleSubmit = () => {
-        const name = nameRef.current.value.trim();
-        const phone = phoneRef.current.value.trim();
-        const people = peopleRef.current.value.trim();
-        const date = dateRef.current.value.trim();
-        const selectName = selectNameRef.current.value;
-        const selectTitle = selectTitleRef.current.value;
-
-
-        if (name === '' || phone === '' || people === '' || date === '' || selectName === '' || selectTitle === '') {
-            showModal(t("xatolik"));
+        if (REQUIRED.some((key) => !form[key].trim())) {
+            setStatus({ type: 'error', text: t('xatolik') });
             return;
         }
 
-        const message = `Ism: ${name}\nTelefon: ${phone}\nOdamlar soni: ${people}\nSana: ${date}\nShahar/Davlat: ${selectName}\nDavlat/Shahar: ${selectTitle}`;
-        sendTelegramMessage(message);
+        setLoading(true);
+        setStatus(null);
 
-        // Clear form inputs after submission
-        setFormData({
-            name: '',
-            phone: '',
-            people: '',
-            date: '',
-            selectName: '',
-            selectTitle: ''
-        });
-    };
+        try {
+            const res = await fetch(ENDPOINT, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(form),
+            });
+            if (!res.ok) throw new Error(`HTTP ${res.status}`);
 
-    const handleInputChange = (event) => {
-        const { name, value } = event.target;
-        setFormData({
-            ...formData,
-            [name]: value
-        });
-    };
-
-
-    const showModal = (message) => {
-        setModalMessage(message);
-        setIsModalVisible(true);
-    };
-
-    const handleModalOk = () => {
-        setIsModalVisible(false);
+            setStatus({ type: 'ok', text: t("tog'ri") });
+            setForm(INITIAL); // forma faqat muvaffaqiyatli yuborilganda tozalanadi
+        } catch (error) {
+            console.error('Contact form error:', error);
+            setStatus({ type: 'error', text: t('xatolik1') });
+        } finally {
+            setLoading(false);
+        }
     };
 
     return (
-        <div className="contact">
-            <div className="container">
-                <div className="contact-map">
+        <section className="contact" id="booking">
+            <div className="contact__inner">
+                <div className="contact__map">
                     <iframe
-                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3724.701620204455!2d-0.1253355847567295!3d51.50832098497764!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x48761a5d6d5e9a1f%3A0x4e8a9b1e0b2c7b6!2sLondon%20Eye!5e0!3m2!1sen!2sng!4v1662648200244!5m2!1sen!2sng"
-                        width="100%"
-                        height="100%"
-                        allowFullScreen=""
+                        title={t('wrapTitle3')}
+                        src={MAP_SRC}
                         loading="lazy"
                         referrerPolicy="no-referrer-when-downgrade"
-                    ></iframe>
+                        allowFullScreen
+                    />
                 </div>
-                <div className="contact-info">
-                    <h1 className='contact-title'>{t("contact-title")}</h1>
-                    <ul className="contact-list">
-                        <li className="contact-item">
-                            <div className='contact-item-box'>
-                                <div className='nimadir'>
-                                    <label className='contact-label'>{t("label-name")} <br />
-                                        <input
-                                            className='contact-input'
-                                            ref={nameRef}
-                                            name="name"
-                                            value={formData.name}
-                                            onChange={handleInputChange}
-                                            required
-                                            type="text"
-                                            placeholder={t("name")}
-                                        />
-                                    </label>
-                                </div>
-                                <div className='nimadir'>
-                                    <label className='contact-label'>{t("label-phone")} <br />
-                                        <input
-                                            className='contact-input'
-                                            ref={phoneRef}
-                                            name="phone"
-                                            value={formData.phone}
-                                            onChange={handleInputChange}
-                                            required
-                                            type="tel"
-                                            placeholder={t("phone")}
-                                        />
-                                    </label>
-                                </div>
-                            </div>
-                        </li>
-                        <li className="contact-item">
-                            <div className='contact-item-box'>
-                                <div className='nimadir'>
-                                    <label className='contact-label'>{t("label-people")} <br />
-                                        <input
-                                            className='contact-input'
-                                            ref={peopleRef}
-                                            name="people"
-                                            value={formData.people}
-                                            onChange={handleInputChange}
-                                            required
-                                            type="number"
-                                            placeholder={t("people")}
-                                        />
-                                    </label>
-                                </div>
-                                <div className='nimadir'>
-                                    <label className='contact-label'>{t("label-data")} <br />
-                                        <input
-                                            className='contact-input'
-                                            ref={dateRef}
-                                            name="date"
-                                            value={formData.date}
-                                            onChange={handleInputChange}
-                                            required
-                                            type='date'
-                                        />
-                                    </label>
-                                </div>
-                            </div>
-                        </li>
-                    </ul>
-                    <label style={{
-                        fontFamily: 'sans-serif',
-                        fontSize: 18,
-                        opacity: 0.5
-                    }}>{t("select-name")} <br />
-                        <select className='selected'
-                            ref={selectNameRef}
-                            name="selectName"
-                            value={formData.selectName}
-                            onChange={handleInputChange}
-                            required
-                         
-                        >
 
-                            <option value={t("shahar4")}>{t("shahar4")}</option>
-                            <option value={t("shahar")}>{t("shahar")}</option>
-                            <option value={t("shahar5")}>{t("shahar5")}</option>
-                            <option value={t("shahar6")}>{t("shahar6")}</option>
-                            <option value={t("davlat")}>{t("davlat")}</option>
-                            <option value={t("davlat4")}>{t("davlat4")}</option>
-                            <option value={t("davlat5")}>{t("davlat5")}</option>
-                            <option value={t("davlat6")}>{t("davlat6")}</option>
-                        </select>
-                    </label> <br /> <br />
-                    <label style={{
-                        fontFamily: 'sans-serif',
-                        fontSize: 18,
-                        opacity: 0.5
-                    }}>
-                        {t("select-title")} <br />
-                        <select className='selected'
-                            ref={selectTitleRef}
-                            name="selectTitle"
-                            value={formData.selectTitle}
-                            onChange={handleInputChange}
-                            required
-                           
-                        >
+                <div className="contact__card">
+                    <h2 className="contact__title">{t('contact-title')}</h2>
 
-                            <option value={t("davlat")}>{t("davlat")}</option>
-                            <option value={t("davlat4")}>{t("davlat4")}</option>
-                            <option value={t("davlat5")}>{t("davlat5")}</option>
-                            <option value={t("davlat6")}>{t("davlat6")}</option>
-                            <option value={t("shahar4")}>{t("shahar4")}</option>
-                            <option value={t("shahar")}>{t("shahar")}</option>
-                            <option value={t("shahar5")}>{t("shahar5")}</option>
-                            <option value={t("shahar6")}>{t("shahar6")}</option>
-                        </select>
-                    </label> <br /> <br />
-                    <button className='contact-btn' onClick={handleSubmit}>{t("button6")}</button>
+                    <form className="contact__form" onSubmit={handleSubmit} noValidate>
+                        <div className="contact__row">
+                            <Field label={t('label-name')}>
+                                <input
+                                    className="contact__control"
+                                    name="name"
+                                    type="text"
+                                    autoComplete="name"
+                                    value={form.name}
+                                    onChange={handleChange}
+                                    placeholder={t('name')}
+                                    required
+                                />
+                            </Field>
+                            <Field label={t('label-phone')}>
+                                <input
+                                    className="contact__control"
+                                    name="phone"
+                                    type="tel"
+                                    inputMode="tel"
+                                    autoComplete="tel"
+                                    value={form.phone}
+                                    onChange={handleChange}
+                                    placeholder={t('phone')}
+                                    required
+                                />
+                            </Field>
+                        </div>
+
+                        <div className="contact__row">
+                            <Field label={t('label-people')}>
+                                <input
+                                    className="contact__control"
+                                    name="people"
+                                    type="number"
+                                    inputMode="numeric"
+                                    min="1"
+                                    value={form.people}
+                                    onChange={handleChange}
+                                    placeholder={t('people')}
+                                    required
+                                />
+                            </Field>
+                            <Field label={t('label-data')}>
+                                <input
+                                    className="contact__control"
+                                    name="date"
+                                    type="date"
+                                    min={today}
+                                    value={form.date}
+                                    onChange={handleChange}
+                                    required
+                                />
+                            </Field>
+                        </div>
+
+                        <div className="contact__row">
+                            <Field label={t('select-name')}>
+                                <Select
+                                    name="destination"
+                                    value={form.destination}
+                                    onChange={handleChange}
+                                    keys={CITY_FIRST}
+                                    t={t}
+                                />
+                            </Field>
+                            <Field label={t('select-title')}>
+                                <Select
+                                    name="country"
+                                    value={form.country}
+                                    onChange={handleChange}
+                                    keys={COUNTRY_FIRST}
+                                    t={t}
+                                />
+                            </Field>
+                        </div>
+
+                        {/* Spam tuzog'i: ko'rinmaydi, odam to'ldirmaydi, bot to'ldiradi */}
+                        <input
+                            className="contact__trap"
+                            name="website"
+                            tabIndex={-1}
+                            autoComplete="off"
+                            aria-hidden="true"
+                            value={form.website}
+                            onChange={handleChange}
+                        />
+
+                        {status && (
+                            <p
+                                className={`contact__status contact__status--${status.type}`}
+                                role={status.type === 'error' ? 'alert' : 'status'}
+                            >
+                                {status.text}
+                            </p>
+                        )}
+
+                        <Button
+                            href={null}
+                            type="submit"
+                            className="contact__submit"
+                            disabled={loading}
+                            aria-busy={loading}
+                        >
+                            {t('button6')}
+                        </Button>
+                    </form>
                 </div>
             </div>
-            <Modal
-                footer={null} visible={isModalVisible} onOk={handleModalOk} onCancel={handleModalOk}>
-                <p>{modalMessage}</p>
-            </Modal>
-        </div>
+        </section>
     );
-}
+};
 
 export default Contact;

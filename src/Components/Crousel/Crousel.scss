@@ -1,210 +1,212 @@
-/* author: https://codepen.io/danielwuachin/pen/NWoqxjv
-Jose Rodriguez */
+// Ranglar Navbar.scss dagi :root o'zgaruvchilaridan olinadi (zaxira qiymatlari bilan)
+// DIQQAT: eski fayldagi global `* { ... }` va `body { ... }` qoidalari bu yerdan olib tashlandi.
 
-* {
-  box-sizing: border-box;
-  font-family: Arial, Helvetica, sans-serif;
-  margin: 0;
-  padding: 0;
-}
-
-body {
-  background-color: #eeeeea;
-}
-
-.crousel-wrapper {
-  align-items: center;
-  display: flex;
-  height: 80vh;
-  justify-content: center;
+.gallery {
   width: 100%;
-}
+  padding: 72px 0;
+  color: #fff;
+  font-family: 'Manrope', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
 
-.crousel-container {
-  display: flex;
-  flex-wrap: nowrap;
-  height: 400px;
-  justify-content: start;
-}
-
-.crousel {
-  align-items: flex-end;
-  background-size: cover;
-  border-radius: 2rem;
-  box-shadow: 0px 10px 30px -5px rgba(0,0,0,0.8);
-  cursor: pointer;
-  display: flex;
-  margin: 0 10px;
-  overflow: hidden;
-  transition: .6s cubic-bezier(.28,-0.03,0,.99);
-  width: 80px;
-}
-
-.crousel > .row {
-  color: white;
-  display: flex;
-  flex-wrap: nowrap;
-}
-
-.crousel > .row > .icon {
-  align-items: center;
-  background: white;
-  border-radius: 50%;
-  color: black;
-  display: flex;
-  justify-content: center;
-  margin: 15px;
-  width: 50px;
-  height: 50px;
-}
-
-.crousel > .row > .description {
-  display: flex;
-  flex-direction: column;
-  height: 80px;
-  justify-content: center;
-  opacity: 0;
-  overflow: hidden;
-  transform: translateY(30px);
-  transition: all .3s ease;
-  transition-delay: .3s;
-  width: 520px;
-}
-
-.description p {
-  color: #b0b0ba;
-  padding-top: 5px;
-}
-
-.description h4 {
-  text-transform: uppercase;
-}
-
-.crousel-input {
-  display: none;
-}
-
-.crousel-input:checked + label {
-  width: 600px;
-}
-
-.crousel-input:checked + label .description {
-  opacity: 1 !important;
-  transform: translateY(0) !important;
-}
-
-.crousel[for="c1"] {
-  background-image: url(/src/assets/dubai.jpg);
-}
-
-.crousel[for="c2"] {
-  background-image: url(/src/assets/antalya.jpg);
-}
-
-.crousel[for="c3"] {
-  background-image: url(/src/assets/istanbul.jpg);
-}
-
-.crousel[for="c4"] {
-  background-image: url(/src/assets/sharm.jpg);
-}
-
-.crousel[for="c5"] {
-  background-image: url(/src/assets/images.jpeg);
-}
-
-/* Responsiveness for crousel */
-
-@media (max-width: 1020px) {
-  .crousel {
-    width: 70px;
+  &__inner {
+      width: min(100% - 40px, 1200px);
+      margin-inline: auto;
   }
 
-
-
-  .crousel-input:checked + label {
-    width: 500px;
-  }
-  .crousel-wrapper{
-    height: 70vh;
-  }
-}
-@media (max-width: 920px) {
-  .crousel {
-    width: 70px;
-    margin: 0 5px;
-  }
-  .crousel-wrapper{
-    height: 65vh;
-  }
- 
-
-  .crousel-input:checked + label {
-    width: 470px;
-  }
-}
-
-@media (max-width: 820px) {
-  .crousel {
-    width: 70px;
-  }
-  .crousel[for=c5]{
-    display: none;
-  }
- 
-
-  .crousel-input:checked + label {
-    width: 450px;
-  }
-}
-
-@media (max-width: 720px) {
-  .crousel {
-    width: 60px;
+  // Piksel bilan belgilangan kengliklar o'rniga flex-grow: ekran qancha bo'lsa, shunga moslashadi
+  &__track {
+      display: flex;
+      gap: 12px;
+      height: clamp(380px, 62vh, 520px);
   }
 
-  .crousel-input:checked + label {
-    width: 380px;
-  }
-}
+  // ---------- Bitta panel ----------
+  &__panel {
+      position: relative;
+      isolation: isolate;
+      flex: 1 1 0;
+      min-width: 56px;
+      margin: 0;
+      padding: 0;
+      border: 0;
+      overflow: hidden;
+      border-radius: 28px;
+      background: #0b4f52; // rasm yuklanguncha ko'rinadigan rang
+      color: inherit;
+      font: inherit;
+      text-align: left;
+      cursor: pointer;
+      box-shadow: 0 20px 40px -24px rgba(11, 79, 82, 0.55);
+      transition: flex-grow 0.6s cubic-bezier(0.22, 1, 0.36, 1);
 
-@media (max-width: 620px) {
-  .crousel {
-    width: 60px;
-  }
-  .crousel[for=c4]{
-    display: none;
-  }
- 
+      // Yopiq panelni xiralashtiradi, ochiq panel yorqin qoladi
+      &::before {
+          content: '';
+          position: absolute;
+          inset: 0;
+          z-index: 1;
+          background: rgba(5, 40, 42, 0.4);
+          transition: opacity 0.5s ease;
+      }
 
-  .crousel-input:checked + label {
-    width: 350px;
-  }
-}
+      // Pastdan qoramtir qatlam: oq matn o'qiladi
+      &::after {
+          content: '';
+          position: absolute;
+          inset: 0;
+          z-index: 1;
+          background: linear-gradient(to top, rgba(5, 40, 42, 0.78), rgba(5, 40, 42, 0) 55%);
+      }
 
-@media (max-width: 520px) {
-  .crousel {
-    width: 80px;
+      &:focus-visible {
+          outline: 3px solid var(--brand, #00ced1);
+          outline-offset: 3px;
+      }
+
+      @media (hover: hover) {
+          &:hover::before {
+              opacity: 0.6;
+          }
+      }
+
+      &.is-active {
+          flex-grow: 7;
+          cursor: default;
+      }
+
+      &.is-active::before {
+          opacity: 0;
+      }
   }
 
-  .crousel-input:checked + label {
-    width: 200px;
+  // ---------- Rasm ----------
+  &__img {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transform: scale(1.12);
+      transition: transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
   }
-}
 
-@media (max-width: 420px) {
-  .crousel {
-    width: 80px;
-  }
-  .crousel[for=c3]{
-    display: none;
+  &__panel.is-active &__img {
+      transform: none;
   }
 
-  .crousel-input:checked + label {
-    width: 200px;
+  // ---------- Yopiq panel: vertikal nom ----------
+  &__label {
+      position: absolute;
+      bottom: 22px;
+      left: 50%;
+      z-index: 2;
+      font-size: 17px;
+      font-weight: 800;
+      letter-spacing: 0.02em;
+      white-space: nowrap;
+      writing-mode: vertical-rl;
+      transform: translateX(-50%) rotate(180deg);
+      transition: opacity 0.3s ease;
   }
-}
 
-@media (max-width: 320px) {
- 
+  &__panel.is-active &__label {
+      opacity: 0;
+  }
+
+  // ---------- Ochiq panel: ikonka + nom + aholi ----------
+  &__info {
+      position: absolute;
+      right: 22px;
+      bottom: 22px;
+      left: 22px;
+      z-index: 2;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      opacity: 0;
+      transform: translateY(16px);
+      pointer-events: none;
+      transition: opacity 0.25s ease, transform 0.25s ease;
+  }
+
+  // Panel ochilib bo'lgandan keyin chiqadi (kechikish bilan)
+  &__panel.is-active &__info {
+      opacity: 1;
+      transform: none;
+      transition: opacity 0.4s ease 0.3s, transform 0.4s ease 0.3s;
+  }
+
+  &__icon {
+      flex: 0 0 auto;
+      display: grid;
+      place-items: center;
+      width: 46px;
+      height: 46px;
+      border-radius: 50%;
+      background: #fff;
+      color: #0b4f52;
+      font-size: 18px;
+  }
+
+  &__name {
+      display: block;
+      font-size: 22px;
+      font-weight: 800;
+      line-height: 1.15;
+      letter-spacing: -0.01em;
+  }
+
+  &__meta {
+      display: block;
+      margin-top: 2px;
+      color: rgba(255, 255, 255, 0.85);
+      font-size: 15px;
+      font-weight: 600;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+      &__panel,
+      &__panel::before,
+      &__img,
+      &__label,
+      &__info {
+          transition: none !important;
+      }
+  }
+
+  // ---------- Telefon: panellar ustma-ust, pastga qarab ochiladi ----------
+  @media (max-width: 640px) {
+      padding: 48px 0;
+
+      &__track {
+          flex-direction: column;
+          gap: 8px;
+          height: 540px;
+      }
+
+      &__panel {
+          min-width: 0;
+          min-height: 64px;
+          border-radius: 22px;
+
+          &.is-active {
+              flex-grow: 6;
+          }
+      }
+
+      // Yopiq panelda nom gorizontal, chapda
+      &__label {
+          top: 50%;
+          bottom: auto;
+          left: 22px;
+          writing-mode: horizontal-tb;
+          transform: translateY(-50%);
+      }
+
+      &__info {
+          right: 16px;
+          bottom: 16px;
+          left: 16px;
+      }
+  }
 }

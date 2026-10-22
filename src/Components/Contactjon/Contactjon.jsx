@@ -1,38 +1,54 @@
-import React from 'react'
-import './Contactjon.scss'
-import { useTranslation } from 'react-i18next'
+import React from 'react';
+import { useTranslation } from 'react-i18next';
 import Button from '../Button/Button';
 import Wrap from '../Wrap/Wrap';
+import './Contactjon.scss';
+
+// Uchta takrorlangan <Wrap /> o'rniga bitta ro'yxat
+const CONTACTS = [
+    { title: 'wrapTitle', icon: 'fa-phone', href: 'tel:+998999999999', value: '+998 99 999 99 99' },
+    {
+        title: 'wrapTitle2',
+        icon: 'fa-envelope',
+        href: 'mailto:zamonbiznestour@mail.ru',
+        value: 'zamonbiznestour@mail.ru',
+    },
+    {
+        title: 'wrapTitle3',
+        icon: 'fa-map-marker',
+        href: 'https://www.google.com/maps/place/15/25,+Chilanzar+-+9,+Tashkent+city',
+        value: '15/25, Chilanzar - 9',
+    },
+];
+
 const Contactjon = () => {
-    const {t,i18n} = useTranslation();
-  return (
-    <>
-    <div className="contactjon" id='contact'>
-        <div className="container">
-            <div className="contactjon-box">
-                <h3 className="contactjon-subtitle">{t("contactjon-title")}</h3>
-                <h1 className="contactjon-title">{t("contactjon-title")}</h1> 
-                <br /> <Button name={t("button2")}/>
+    const { t } = useTranslation();
+
+    return (
+        <section className="contactjon" id="contact">
+            <div className="contactjon__inner">
+                <h2 className="contactjon__title">{t('contactjon-title')}</h2>
+
+                {/* Tugma endi pastdagi buyurtma formasiga olib boradi (avval o'z bo'limiga havola edi) */}
+                <div className="contactjon__cta">
+                    <Button name={t('button2')} href="#booking" />
+                </div>
+
+                <ul className="contactjon__list">
+                    {CONTACTS.map(({ title, icon, href, value }) => (
+                        <li className="contactjon__item" key={title}>
+                            <Wrap
+                                wrapTitle={t(title)}
+                                imagess={<i className={`fa ${icon}`} />}
+                                h={href}
+                                data={value}
+                            />
+                        </li>
+                    ))}
+                </ul>
             </div>
+        </section>
+    );
+};
 
-            <div className='conttactjon-content'>
-            <ul className="contactjon-list">
-                <li className="contactjon-item">
-                    <Wrap wrapTitle={t("wrapTitle")} imagess={<i  style={{color:"#00CED1"}}  className='fa fa-phone'></i>} h={"tel:+998999999999"} data={"+998 99 999 99 99"}/>
-                </li>
-                <li className="contactjon-item">
-                    <Wrap wrapTitle={t("wrapTitle2")} imagess={<i style={{color:"#00CED1"}} className='fa fa-envelope'></i>} h={"mailto:zamonbiznestour@mail.ru"} data={"zamonbiznestour@mail.ru"}/>
-                </li>
-                <li className="contactjon-item">
-                    <Wrap wrapTitle={t("wrapTitle3")} imagess={<i style={{color:"#00CED1"}} className='fa fa-map-marker'></i>} h={"https://www.google.com/maps/place/15/25,+Chilanzar+-+9,+Tashkent+city"} data={"15/25, Chilanzar - 9 "}/>
-                </li>
-            </ul>
-            </div>
-
-        </div>
-    </div>
-    </>
-  )
-}
-
-export default Contactjon
+export default Contactjon;

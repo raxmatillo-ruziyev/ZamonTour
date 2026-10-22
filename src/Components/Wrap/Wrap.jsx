@@ -1,21 +1,27 @@
-import React from 'react'
-import './Wrap.scss'
-import { useTranslation } from 'react-i18next'
+import React from 'react';
+import './Wrap.scss';
 
-const Wrap = ({imagess,h,data,wrapTitle}) => {
-    const {t,i18n} =useTranslation();
-  return (
-    <>
-    <div className="wrap">
-      <i  className='wrap-icon'>{imagess}</i>
+// Aloqa kartasi: ikonka, sarlavha va havola.
+// Props nomlari o'zgarmagan: imagess, h, data, wrapTitle.
+const Wrap = ({ imagess, h, data, wrapTitle }) => {
+    // Tashqi saytlar (masalan, xarita) yangi oynada ochiladi, tel: va mailto: esa odatdagidek
+    const external = /^https?:/.test(h);
 
-        <h1 className='wrap-title'>{    wrapTitle}</h1>
-       <a className='wrap-link' href={h}>{data}</a>
-      
-    </div>
-      
-    </>
-  )
-}
+    return (
+        <div className="contact-card">
+            <span className="contact-card__icon" aria-hidden="true">
+                {imagess}
+            </span>
+            <h3 className="contact-card__title">{wrapTitle}</h3>
+            <a
+                className="contact-card__link"
+                href={h}
+                {...(external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
+            >
+                {data}
+            </a>
+        </div>
+    );
+};
 
-export default Wrap
+export default Wrap;
