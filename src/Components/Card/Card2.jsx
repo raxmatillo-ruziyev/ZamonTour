@@ -1,42 +1,22 @@
-import React from 'react'
-import './Card.scss'
-import Button from '../Button/Button'
-import { CarOutlined, HddOutlined, RightOutlined, SendOutlined } from '@ant-design/icons'
-import { useTranslation } from 'react-i18next'
+import React from 'react';
+import TourCard from './TourCard';
 
-const Card2 = ({city,number,images}) => {
-    const { t, i18n } = useTranslation();
-  return (
-    <>
-    <div className="card">
-    <img src={images} alt="" className='card-img'  />
-        <div className="card-box">
-            <h1 className='card-title'>{city}</h1>
-           
-            <li className="card-item">  
-             <p className='card-text'><i id='card-icon' className='fa fa-users'></i>    {number}    {t("card-title")}</p></li>
-            <hr className='card-hr' />
-            <h2 className="card-subtitle">{t("card-subtitle2")}</h2>
-            <ul className='card-list'>
-                <li className="card-item">  
-             <i id='card-icon' className='fa fa-tags'></i>
-                <p className='card-text'>{t( "card-text6")}</p> </li>
-                <li className="card-item">
-                <i id='card-icon' className='fa fa-clock-o'></i>
-                    <p className='card-text'>{t( "card-text7")}</p>
-                </li>
-                <li className="card-item">
-                <i id='card-icon' className='	fa fa-check'></i>
-                    <p className='card-text'> {t( "card-text8")}</p>
-                </li>
-            </ul>
-          <div style={{marginLeft:'10px'}}>  <Button name={t("button3")}/></div>
-         
+const META = ['card-title'];
+const FEATURES = [
+    { icon: 'fa-tags', text: 'card-text6' },
+    { icon: 'fa-clock-o', text: 'card-text7' },
+    { icon: 'fa-check', text: 'card-text8' },
+];
 
-        </div> 
-    </div>
-    </>
-  )
-}
+const Card2 = ({ city, number, images }) => (
+    <TourCard
+        city={city}
+        number={number}
+        images={images}
+        meta={META}
+        subtitle="card-subtitle2"
+        features={FEATURES}
+    />
+);
 
-export default Card2
+export default Card2;

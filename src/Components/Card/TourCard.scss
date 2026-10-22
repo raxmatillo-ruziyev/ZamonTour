@@ -1,0 +1,163 @@
+// Ranglar Navbar.scss dagi :root o'zgaruvchilaridan olinadi (zaxira qiymatlari bilan)
+
+// Poster uslubi: rasm butun kartada, pastda shisha panel.
+// Panel oddiy tartibda turadi (absolute emas), shuning uchun matn uzun bo'lsa karta o'zi cho'ziladi.
+.tour-card {
+    position: relative;
+    isolation: isolate;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    width: 100%;
+    max-width: 320px;
+    min-height: 420px;
+    margin-inline: auto;
+    overflow: hidden;
+    color: #fff;
+    font-family: 'Manrope', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+    background: #0b4f52; // rasm yuklanguncha ko'rinadigan rang
+    border-radius: 24px;
+    box-shadow: 0 24px 44px -24px rgba(11, 79, 82, 0.55);
+
+    // ---------- Rasm va qoramtir qatlam ----------
+    &__img {
+        position: absolute;
+        inset: 0;
+        z-index: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.6s ease;
+    }
+
+    // Pastdan qoramtir qatlam: oq matn har qanday rasmda o'qiladi
+    &::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        z-index: 1;
+        background: linear-gradient(to top, rgba(5, 40, 42, 0.8), rgba(5, 40, 42, 0) 65%);
+        pointer-events: none;
+    }
+
+    // ---------- Tepadagi belgi ----------
+    &__chip {
+        position: absolute;
+        top: 14px;
+        left: 14px;
+        z-index: 2;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        max-width: calc(100% - 28px);
+        padding: 7px 12px;
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        border-radius: 999px;
+        background: rgba(5, 40, 42, 0.45);
+        -webkit-backdrop-filter: blur(10px);
+        backdrop-filter: blur(10px);
+        font-size: 13px;
+        font-weight: 700;
+        line-height: 1.25;
+    }
+
+    // ---------- Pastdagi shisha panel ----------
+    &__panel {
+        position: relative;
+        z-index: 2;
+        margin: 12px;
+        padding: 16px;
+        text-align: left;
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        border-radius: 18px;
+        background: rgba(255, 255, 255, 0.14);
+        -webkit-backdrop-filter: blur(14px);
+        backdrop-filter: blur(14px);
+    }
+
+    &__title {
+        margin: 0;
+        font-size: 24px;
+        font-weight: 800;
+        line-height: 1.15;
+        letter-spacing: -0.02em;
+    }
+
+    &__subtitle {
+        margin: 6px 0 0;
+        color: rgba(255, 255, 255, 0.85);
+        font-size: 13px;
+        font-weight: 600;
+        line-height: 1.35;
+    }
+
+    &__features {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px;
+        margin: 12px 0 0;
+        padding: 0;
+        list-style: none;
+    }
+
+    &__feature {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        padding: 5px 16px 5px 5px; // chap tomonda doira uchun joy
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.2);
+        font-size: 14px;
+        font-weight: 600;
+        line-height: 1.3;
+    }
+
+    // Har bir ikonka o'zining oq doirasida
+    &__icon {
+        flex: 0 0 auto;
+        display: grid;
+        place-items: center;
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        background: #fff;
+        color: #0b4f52;
+        font-size: 14px;
+        box-shadow: 0 4px 10px -4px rgba(0, 0, 0, 0.4);
+    }
+
+    &__panel &__cta {
+        width: 100%;
+        margin-top: 14px;
+    }
+
+    // ---------- Hover (faqat sichqoncha bor qurilmalarda) ----------
+    @media (hover: hover) {
+        &:hover &__img {
+            transform: scale(1.06);
+        }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        &__img {
+            transition: none;
+        }
+
+        &:hover &__img {
+            transform: none;
+        }
+    }
+
+    // ---------- Juda tor ekran ----------
+    @media (max-width: 360px) {
+        min-height: 390px;
+
+        &__panel {
+            padding: 14px;
+        }
+
+        &__title {
+            font-size: 22px;
+        }
+    }
+}

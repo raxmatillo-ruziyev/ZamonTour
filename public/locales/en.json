@@ -18,9 +18,9 @@
   "card-title1": "/person",
   "card-subtitle": "Deal Includes:",
   "card-subtitle2": "Deal Includes:",
-  "card-text1": "5 Days Trip   Hotel Includet",
-  "card-text2": "Airplane Bill Included     ",
-  "card-text3": " Daily Places Visit",
+  "card-text1": "5 days, hotel included",
+  "card-text2": "Flight included",
+  "card-text3": "Daily sightseeing",
   "card-text6": "  Best Prices  ",
   "card-text7": " Short Processing Time",
   "card-text8": " Trustworthy Assistance",
@@ -82,6 +82,5 @@
   "city20": "Oman",
   "city21": "Europe",
   "city22": "Hong Kong",
-  "city23":"Istanbul"
-
+  "city23": "Istanbul"
 }
